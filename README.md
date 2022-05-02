@@ -2,6 +2,16 @@
 
 Data pipeline for ingesting US census data
 
+## Setup
+
+__Prerequisites__
+
+* kubernetes (kubectl)
+* kind (local kubernetes cluster)
+* krew (kubectl plugin manager)
+* helm
+* aws cli
+
 ## Data Sources
 
 Data is tricky to download.  Data has been downloaded from https://www2.census.gov/programs-surveys/cps/datasets/

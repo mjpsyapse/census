@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+set -e
+
+
+cd bin && kind create cluster --config=kind/config.yml
+# could be done better if i added labels for
+# querying instead of relying on the node names
+kubectl wait --for=condition=Ready=true node/kind-worker node/kind-worker2
+
+# Install Trino
+helm repo add trino https://trinodb.github.io/charts/
+helm install warehouse trino/trino
+
+# Install Minio
+kubectl krew update
+kubectl krew install minio
+kubectl minio init
+
+
+# Wait for Trino
+# kubectl wait --for=condition=Ready=true pods -l app=trino
+# kubectl port-forward svc/warehouse-trino 8080:8080 &
+
+# Wait for Minio
+kubectl -n minio-operator wait --for=condition=Ready=true pods -l name=minio-operator --timeout=400s
+kubectl minio tenant create default --servers 1 --volumes 4 --capacity 4G --namespace default
+# kubectl minio proxy -n minio-operator &
+
+# Create bucket
+kubectl wait --for=condition=Ready=true pods -l v1.min.io/tenant=default
+kubectl port-forward svc/minio 9091:443 &
+trap "kill -9 $!" EXIT
+
+export AWS_ACCESS_KEY_ID=admin
+export AWS_SECRET_ACCESS_KEY=$(kubectl get secret default-user-1 -o jsonpath='{.data.CONSOLE_SECRET_KEY}' | base64 --decode)
+aws \
+    --endpoint-url https://localhost:9091 \
+    --no-verify-ss \
+    --output=text \
+    --no-cli-pager \
+    s3api create-bucket --bucket warehouse
+
+echo "Proxy trino"
+echo "kubectl port-forward svc/warehouse-trino 8080:8080"
+echo
+echo "Proxy minio"
+echo "kubectl minio proxy -n minio-operator"
