@@ -1,0 +1,11 @@
+services:
+  dev:
+    build: .
+    volumes:
+    - .:/wrk
+    working_dir: /wrk
+    env:
+      DBT_PROFILES_DIR: /wrk/.dbt
+    command:
+    - sleep
+    - infinity
