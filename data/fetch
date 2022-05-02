@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -e
+
+wget https://www2.census.gov/programs-surveys/cps/datasets/2020/basic/jan20pub.csv

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+# pass the filename of the pdf to convert to text
+
+docker run -v "$PWD/$1:/wrk/$1" pdftotext:local $1
