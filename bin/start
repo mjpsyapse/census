@@ -1,45 +1,71 @@
 #!/usr/bin/env bash
 
-set -e
+function waitfor() {
+    STATUS=1
+    while [ $STATUS -gt 0 ]
+    do
+        sleep 1
+        eval $@ 2> /dev/null
+        STATUS=$?
+    done
+}
 
-
-cd bin && kind create cluster --config=kind/config.yml
+cd bin
+kind create cluster --config=kind/config.yml
 # could be done better if i added labels for
 # querying instead of relying on the node names
+echo "Waiting for k8s nodes..."
 kubectl wait --for=condition=Ready=true node/kind-worker node/kind-worker2
+echo "Done."
 
 # Install Trino
-helm repo add trino https://trinodb.github.io/charts/
-helm install warehouse trino/trino
+helm repo add trino https://trinodb.github.io/charts/ 2> /dev/null
+helm repo add gradiant https://gradiant.github.io/bigdata-charts/ 2> /dev/null
 
+echo "Installing minio..."
 # Install Minio
 kubectl krew update
 kubectl krew install minio
 kubectl minio init
 
-
-# Wait for Trino
-# kubectl wait --for=condition=Ready=true pods -l app=trino
-# kubectl port-forward svc/warehouse-trino 8080:8080 &
-
 # Wait for Minio
+echo "Waiting for minio..."
 kubectl -n minio-operator wait --for=condition=Ready=true pods -l name=minio-operator --timeout=400s
+echo "Done"
 kubectl minio tenant create default --servers 1 --volumes 4 --capacity 4G --namespace default
-# kubectl minio proxy -n minio-operator &
+
+echo "Waiting for minio tenant..."
+waitfor kubectl wait --for=condition=Ready=true pods -l v1.min.io/tenant=default
+echo "Done"
 
 # Create bucket
-kubectl wait --for=condition=Ready=true pods -l v1.min.io/tenant=default
-kubectl port-forward svc/minio 9091:443 &
-trap "kill -9 $!" EXIT
+echo "Waiting for minio svc..."
+waitfor kubectl get svc/minio
 
+echo "Creating warehouse bucket..."
 export AWS_ACCESS_KEY_ID=admin
 export AWS_SECRET_ACCESS_KEY=$(kubectl get secret default-user-1 -o jsonpath='{.data.CONSOLE_SECRET_KEY}' | base64 --decode)
-aws \
-    --endpoint-url https://localhost:9091 \
+
+kubectl run bucket-builder \
+    -i \
+    --rm \
+    --image=amazon/aws-cli:2.6.1 \
+    --env="AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" \
+    --env="AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" \
+    -- \
     --no-verify-ss \
     --output=text \
     --no-cli-pager \
-    s3api create-bucket --bucket warehouse
+    --endpoint-url https://minio \
+    s3api create-bucket --bucket warehouse 2> /dev/null
+echo "Done."
+
+echo "Installing hive..."
+helm install hive-metastore gradiant/hive-metastore -f <(envsubst < hive-metastore/values.yml)
+
+echo "Installing trino"
+helm install trino trino/trino -f <(envsubst < trino/values.yml)
+
 
 echo "Proxy trino"
 echo "kubectl port-forward svc/warehouse-trino 8080:8080"

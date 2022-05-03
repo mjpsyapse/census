@@ -2,6 +2,12 @@
 
 Data pipeline for ingesting US census data
 
+## References
+
+* [General Setup](https://blog.min.io/interactive-sql-query-with-presto-on-minio-cloud-storage/)
+* [Hive Architecture](https://cwiki.apache.org/confluence/display/Hive/Design)
+* [Trino Hive Connector](https://trino.io/docs/current/connector/hive-s3.html)
+
 ## Setup
 
 __Prerequisites__
