@@ -3,3 +3,5 @@
 set -e
 
 wget https://www2.census.gov/programs-surveys/cps/datasets/2020/basic/2020_Basic_CPS_Public_Use_Record_Layout_plus_IO_Code_list.txt
+# Fix encoding
+vim -c "set encoding=utf8" -c "set fileencoding=utf8" -c "wq" 2020_Basic_CPS_Public_Use_Record_Layout_plus_IO_Code_list.txt

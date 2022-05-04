@@ -73,6 +73,11 @@ helm install trino trino/trino -f <(envsubst < trino/values.yml)
 waitfor kubectl wait --for=condition=Ready=true pod -l app=trino
 echo "Done."
 
+
+function trino() {
+    ./cli/trino.jar -f $1 --schema=warehouse --catalog=hive
+}
+
 echo
 echo
 echo "Proxy trino"
