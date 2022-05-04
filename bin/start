@@ -39,8 +39,11 @@ waitfor kubectl wait --for=condition=Ready=true pods -l v1.min.io/tenant=default
 echo "Done"
 
 # Create bucket
+echo "Disable minio TLS..."
+kubectl patch Tenant default --patch-file=minio/tenant.yaml --type=merge
+
 echo "Waiting for minio svc..."
-waitfor kubectl get svc/minio
+waitfor kubectl wait --for=jsonpath='{.spec.ports[0].port}'=80 svc/minio
 
 echo "Creating warehouse bucket..."
 export AWS_ACCESS_KEY_ID=admin
@@ -53,22 +56,27 @@ kubectl run bucket-builder \
     --env="AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" \
     --env="AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" \
     -- \
-    --no-verify-ss \
     --output=text \
     --no-cli-pager \
-    --endpoint-url https://minio \
+    --endpoint-url http://minio \
     s3api create-bucket --bucket warehouse 2> /dev/null
 echo "Done."
 
 echo "Installing hive..."
-helm install hive-metastore gradiant/hive-metastore -f <(envsubst < hive-metastore/values.yml)
-
+helm dependency update hive-metastore/chart
+helm install hive-metastore ./hive-metastore/chart -f <(envsubst < hive-metastore/values.yml)
+waitfor kubectl wait --for=condition=Ready=true pod -l app.kubernetes.io/instance=hive-metastore
+echo "Done."
+echo
 echo "Installing trino"
 helm install trino trino/trino -f <(envsubst < trino/values.yml)
+waitfor kubectl wait --for=condition=Ready=true pod -l app=trino
+echo "Done."
 
-
+echo
+echo
 echo "Proxy trino"
-echo "kubectl port-forward svc/warehouse-trino 8080:8080"
+echo "kubectl port-forward svc/trino 8080:8080"
 echo
 echo "Proxy minio"
 echo "kubectl minio proxy -n minio-operator"

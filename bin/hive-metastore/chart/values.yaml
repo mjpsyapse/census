@@ -1,0 +1,20 @@
+# The base hadoop image to use for all components.
+# See this repo for image build details: https://github.com/Comcast/kube-yarn/tree/master/image
+
+postgresql:
+  image:
+    debug: true
+  auth:
+    username: hive
+    password: hivepassword
+    database: metastore
+  primary:
+    initdb:
+      scriptsConfigMap: hive-metastore-postgresql-init
+
+image:
+  tag: 0.2.3
+  repository: mprestifilippo/hive-metastore
+  pullPolicy: IfNotPresent
+
+resources: {}

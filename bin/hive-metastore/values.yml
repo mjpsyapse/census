@@ -1,25 +1,11 @@
-# hdfs:
-#   dataNode:
-#     replicas: 1
-#     pdbMinAvailable: 1
-#   conf:
-#     hdfsSite:
-#       dfs.replication: 1
-
-# conf:
-#   hdfsSite:
-#     fs.s3a.endpoint: https://minio:9000
-#     fs.s3a.access.key: admin
-#     fs.s3a.secret.key: $AWS_SECRET_ACCESS_KEY
-#     fs.s3a.path.style.access: true
-#     fs.s3a.impl: org.apache.hadoop.fs.s3a.S3AFileSystem
-
 conf:
   hiveSite:
     hive.metastore.warehouse.dir: file:///tmp
-    hive.metastore.schema.verification: true
-  hdfsSite:
-    fs.s3a.endpoint: https://minio:9000
+    hive.metastore.schema.verification: false
+  coreSite:
+    fs.s3a.connection.ssl.enabled: false
+    fs.s3a.endpoint: http://minio
     fs.s3a.access.key: admin
     fs.s3a.secret.key: $AWS_SECRET_ACCESS_KEY
     fs.s3a.path.style.access: true
+    fs.s3a.impl: org.apache.hadoop.fs.s3a.S3AFileSystem
