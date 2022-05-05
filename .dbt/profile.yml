@@ -4,12 +4,11 @@ pipeline:
     dev:
       type: trino
       method: none  # optional, one of {none | ldap | kerberos}
-      user: [dev_user]
-      password: [password]  # required if method is ldap or kerberos
-      database: [database name]
-      host: [hostname]
-      port: [port number]
-      schema: [dev_schema]
-      threads: [1 or more]
+      user: admin
+      database: hive
+      host: trino
+      port: 8080
+      schema: warehouse
+      threads: 3
   
   target: dev

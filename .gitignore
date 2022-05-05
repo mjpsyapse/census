@@ -3,3 +3,4 @@ data/*.zip
 metadata/*.pdf
 metadata/*.txt
 logs/
+bin/hive-metastore/chart/charts/*.tgz

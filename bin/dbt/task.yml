@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dbt-conf
+data:
+  profile.yml: |
+    pipeline:
+      outputs:
+
+        pipeline:
+          type: trino
+          method: none
+          user: admin
+          database: hive
+          host: trino
+          port: 8080
+          schema: warehouse
+          threads: 3
+      
+      target: dev
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dbt
+  labels:
+    app: dbt
+spec:
+  containers:
+  - image: mprestifilippo/dbt:0.1.0
+    name: dbt
+    command:
+    - sleep
+    args:
+    - infinity
+    volumeMounts:
+    - name: dbt-conf
+      mountPath: /wrk/.dbt
+    env:
+    - name: DBT_PROFILES_DIR
+      value: /wrk/.dbt
+  volumes:
+  - name: dbt-conf
+    configMap:
+      name: dbt-conf
