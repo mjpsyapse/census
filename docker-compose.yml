@@ -1,23 +1,11 @@
 services:
-  # dev:
-  #   build: .
-  #   volumes:
-  #   - .:/wrk
-  #   working_dir: /wrk
-  #   environment:
-  #     DBT_PROFILES_DIR: /wrk/.dbt
-  #   command:
-  #   - sleep
-  #   - infinity
-  hive:
-    image: mprestifilippo/hive-metastore:0.2.1
+  dev:
+    build: .
     volumes:
-    - ./docker/hive/conf/hive-site.xml:/home/hive/hive/conf/hive-site.xml
-    entrypoint: sleep
-    command: infinity
-  hive-postgres:
-    image: postgres:14
+    - .:/wrk
+    working_dir: /wrk
     environment:
-      POSTGRES_USER: hive
-      POSTGRES_PASSWORD: hive
-      POSTGRES_DB: metastore
+      DBT_PROFILES_DIR: /wrk/.dbt
+    command:
+    - sleep
+    - infinity
