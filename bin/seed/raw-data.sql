@@ -5,7 +5,7 @@ create table hive.warehouse.census_2020_data (hrhhid2 varchar,HUFINAL varchar,OC
 with (
     format = 'CSV',
     skip_header_line_count = 1,
-    external_location = 's3a://warehouse/census/2020/data/'
+    external_location = 's3a://warehouse/raw/census/2020/data/'
 );
 
 drop table if exists hive.warehouse.census_2020_legend;
@@ -13,7 +13,7 @@ create table hive.warehouse.census_2020_legend (name varchar, description varcha
 with (
     format = 'CSV',
     skip_header_line_count = 1,
-    external_location = 's3a://warehouse/census/2020/legend/'
+    external_location = 's3a://warehouse/raw/census/2020/legend/'
 );
 
 drop table if exists  hive.warehouse.census_2020_kb;
@@ -21,5 +21,5 @@ create table hive.warehouse.census_2020_kb (column varchar, key varchar, value v
 with (
     format = 'CSV',
     skip_header_line_count = 1,
-    external_location = 's3a://warehouse/census/2020/kb/'
+    external_location = 's3a://warehouse/raw/census/2020/kb/'
 );
