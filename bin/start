@@ -45,6 +45,10 @@ kubectl patch Tenant default --patch-file=minio/tenant.yaml --type=merge
 echo "Waiting for minio svc..."
 waitfor kubectl wait --for=jsonpath='{.spec.ports[0].port}'=80 svc/minio
 
+export AWS_ACCESS_KEY_ID=admin
+export AWS_SECRET_ACCESS_KEY=$(kubectl get secret default-user-1 -o jsonpath='{.data.CONSOLE_SECRET_KEY}' | base64 --decode)
+
+
 echo "Installing hive..."
 helm dependency update hive-metastore/chart
 helm install hive-metastore ./hive-metastore/chart -f <(envsubst < hive-metastore/values.yml)
@@ -57,8 +61,6 @@ waitfor kubectl wait --for=condition=Ready=true pod -l app=trino
 echo "Done."
 
 echo "Creating warehouse bucket..."
-export AWS_ACCESS_KEY_ID=admin
-export AWS_SECRET_ACCESS_KEY=$(kubectl get secret default-user-1 -o jsonpath='{.data.CONSOLE_SECRET_KEY}' | base64 --decode)
 
 kubectl run bucket-builder \
     -i \

@@ -1,46 +1,46 @@
 {% set category_columns = ([
-    "hefaminc",     
-    "pemlr",            
-    "puretot",          
-    "pudis",      
-    "pudis1",     
-    "pudis2",     
-    "pemjot",     
-    "hrhtype",    
-    "peret1",     
-    "pedwwnto",   
-    "prmjind1",   
-    "prdtocc2",   
-    "peio1icd",   
-    "peio2icd",   
-    "pehrrsn1",   
-    "pehrrsn2",   
-    "pehrrsn3",   
-    "gereg",      
-    "gediv",      
-    "gestfips",   
-    "gtcbsasz",   
-    "pemaritl",   
-    "prpertyp",   
-    "pesex",      
-    "peeduca",    
-    "ptdtrace",   
-    "pehspnon",   
-    "prdthsp",    
-    "prfamtyp",   
-    "penatvty",   
-    "pemntvty",   
-    "pefntvty",   
-    "hrintsta",   
-    "prcitshp"    
+    "hefaminc",
+    "pemlr",
+    "puretot",
+    "pudis",
+    "pudis1",
+    "pudis2",
+    "pemjot",
+    "hrhtype",
+    "peret1",
+    "pedwwnto",
+    "prmjind1",
+    "prdtocc2",
+    "peio1icd",
+    "peio2icd",
+    "pehrrsn1",
+    "pehrrsn2",
+    "pehrrsn3",
+    "gereg",
+    "gediv",
+    "gestfips",
+    "gtcbsasz",
+    "pemaritl",
+    "prpertyp",
+    "pesex",
+    "peeduca",
+    "ptdtrace",
+    "pehspnon",
+    "prdthsp",
+    "prfamtyp",
+    "penatvty",
+    "pemntvty",
+    "pefntvty",
+    "hrintsta",
+    "prcitshp"
  ]) %}
 
 
-{% set numeric_columns = ([  
-    "pehrusl1",                
-    "pehrusl2",                
-    "pehruslt",                
- ])                        %}
+{% set numeric_columns = ([
+    "pehrusl1",
+    "pehrusl2",
+    "pehruslt",
+ ]) %}
 
 
 {{
@@ -75,7 +75,8 @@ SELECT
         WHEN prtage = '' THEN NULL
         WHEN CAST(prtage AS INTEGER) BETWEEN 0 AND 85 THEN CAST(prtage AS INTEGER)
         ELSE NULL
-    END AS prtage
+    END AS prtage,
+    CAST(hrmonth AS INTEGER) hrmonth
 FROM
     {{ source('warehouse', 'census_2020_data') }}
 WHERE

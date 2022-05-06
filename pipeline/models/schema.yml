@@ -804,53 +804,132 @@ models:
     tests:
     - not_null
   - name: hefaminc
+    description: Household family income
     tests:
     - valid_values
   - name: pemlr
+    description: Employment status
     tests:
     - valid_values
   - name: puretot
+    description: Retirement status
     tests:
     - valid_values
   - name: pudis
+    description: Disability status
     tests:
     - valid_values
   - name: pudis1
+    description: Disability affects work 1
     tests:
     - valid_values
   - name: pudis2
+    description: Disability affects work 2
     tests:
     - valid_values
+  - name: pemjot
+    description: Number of jobs
   - name: hrhtype
+    description: Household type
     tests:
     - valid_values
+  - name: pehrusl1
+    description: Main job hours
+  - name: pehrusl2
+    description: Alt job hours
+  - name: pehrftpt
+    description: Total job hours
   - name: peret1
+    description: Want a job?
     tests:
     - valid_values
   - name: pedwwnto
+    description: Want any job?
     tests:
     - valid_values
   - name: prmjind1
+    description: Broad occupation industry
     tests:
     - valid_values
   - name: prdtocc2
+    description: Detailed occupation industry
     tests:
     - valid_values
   - name: peio1icd
+    description: Industry code primary job
     tests:
     - valid_values
   - name: pehrrsn1
+    description: Main reason work part time
+    tests:
+    - valid_values
+  - name: pehrrsn2
+    description: Main reason no work full time
+    tests:
+    - valid_values
+  - name: pehrrsn3
+    description: Reason working < 35h
+    tests:
+    - valid_values
+  - name: gereg
+    description: Geographic region
+    tests:
+    - valid_values
+  - name: gediv
+    description: Geographic division
+    tests:
+    - valid_values
+  - name: gestfips
+    description: Geographic state
+    tests:
+    - valid_values
+  - name: gtcbsasz
+    description: Population of area
+    tests:
+    - valid_values
+  - name: prtage
+    description: Age
+  - name: pemaritl
+    description: Marital status
+    tests:
+    - valid_values
+  - name: prpertyp
+    description: Person type
     tests:
     - valid_values
   - name: pesex
+    description: Sex
     tests:
     - valid_values
   - name: ptdtrace
+    description: Race
     tests:
     - valid_values
   - name: peeduca
+    description: Education
     tests:
     - valid_values
-  - name: pemaritl
+  - name: pehspnon
+    description: Hispanic/Non Hispanic
+    tests:
+    - valid_values
+  - name: prdthsp
+    description: Hispanic Origin
+    tests:
+    - valid_values
+  - name: prfamtyp
+    description: Family type
+    tests:
+    - valid_values
+  - name: penatvty
+    description: Country of birth
+    tests:
+    - valid_values
+  - name: pemntvty
+    description: Mother's country of birth
+    tests:
+    - valid_values
+  - name: pefntvty
+    description: Father's country of birth
     tests:
     - valid_values
