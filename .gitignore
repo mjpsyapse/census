@@ -4,3 +4,5 @@ metadata/*.pdf
 metadata/*.txt
 logs/
 bin/hive-metastore/chart/charts/*.tgz
+bin/target
+bin/*.tar

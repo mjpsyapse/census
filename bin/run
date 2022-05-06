@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# kubectl delete pod dbt
+# kubectl delete cm dbt-conf
+
+cd bin
+
+echo "Deploy dbt..."
+kubectl apply -f dbt/task.yml
+
+kubectl wait --for=condition=Ready=true pod dbt
+
+function upload_pipeline() {
+    kubectl exec dbt -- bash -c 'rm -rf /tmp/pipeline* || true'
+    cd ..
+    tar cf bin/pipeline.tar ./pipeline
+    cd bin
+    kubectl cp pipeline.tar dbt:/tmp/
+    kubectl exec dbt -- bash -c 'cd /tmp && tar xf pipeline.tar'
+}
+
+function run_pipeline() {
+    upload_pipeline
+    kubectl exec dbt -- bash -c 'cd /tmp/pipeline && dbt run && dbt test'
+}
+
+function run_docs() {
+    upload_pipeline
+    kubectl exec dbt -- bash -c 'cd /tmp/pipeline && dbt docs generate && tar cf docs.tar target'
+    rm -rf target || true
+    kubectl cp dbt:/tmp/pipeline/docs.tar ./docs.tar
+    tar xf docs.tar
+    cd target
+    python3 -mhttp.server 8000
+}
+
+eval "run_$@"

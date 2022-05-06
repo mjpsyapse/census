@@ -3,11 +3,11 @@ kind: ConfigMap
 metadata:
   name: dbt-conf
 data:
-  profile.yml: |
+  profiles.yml: |
     pipeline:
       outputs:
 
-        pipeline:
+        dev:
           type: trino
           method: none
           user: admin

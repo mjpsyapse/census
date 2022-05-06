@@ -74,7 +74,7 @@ kubectl run bucket-builder \
 echo "Done."
 
 function trino() {
-    ./cli/trino.jar -f $1 --catalog=hive
+    ./cli/trino.jar -f $1
 }
 
 

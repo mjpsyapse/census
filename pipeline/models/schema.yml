@@ -1,0 +1,856 @@
+
+version: 2
+
+sources:
+- name: warehouse
+  tables:
+  - name: census_2020_data
+    description: Raw census data
+    columns:
+    - name: gediv
+      description: DIVISION
+    - name: gereg
+      description: REGION
+    - name: gestfips
+      description: FEDERAL INFORMATION PROCESSING STANDARDS (FIPS) STATE CODE
+    - name: gtcbsa
+      description: SPECIFIC METROPOLITAN CBSA CODE (SEE GEOGRAPHIC ATTACHMENT)
+    - name: gtcbsast
+      description: PRINCIPAL CITY/BALANCE STATUS
+    - name: gtcbsasz
+      description: Metropolitan Area (CBSA) SIZE
+    - name: gtco
+      description: FIPS COUNTY CODE
+    - name: gtcsa
+      description: Consolidated Statistical Area (CSA) FIPS CODE (SEE GEOGRAPHIC ATTACHMENT)
+    - name: gtindvpc
+      description: INDIVIDUAL PRINCIPAL CITY
+    - name: gtmetsta
+      description: METROPOLITAN STATUS
+    - name: hefaminc
+      description: FAMILY INCOME (COMBINED INCOME OF ALL FAMILY MEMBERS DURING THE LAST 12 MONTHS.  INCLUDES MONEY FROM JOBS, NET INCOME FROM BUSINESS, FARM OR RENT, PENSIONS, DIVIDENDS, INTEREST, SOCIAL SECURITY PAYMENTS AND ANY OTHER MONEY INCOME RECEIVED BY FAMILY MEMBERS WHO ARE 15 YEARS OF AGE OR OLDER.)
+    - name: hehousut
+      description: TYPE OF HOUSING UNIT
+    - name: hephoneo
+      description: IS A TELEPHONE INTERVIEW ACCEPTABLE?
+    - name: hetelavl
+      description: IS THERE A TELEPHONE ELSEWHERE ON WHICH PEOPLE IN THIS HOUSEHOLD CAN BE CONTACTED?
+    - name: hetelhhd
+      description: IS THERE A TELEPHONE IN THIS HOUSE/APARTMENT?
+    - name: hrhhid
+      description: HOUSEHOLD IDENTIFIER	(Part 1)
+    - name: hrhhid2
+      description: HOUSEHOLD IDENTIFIER (part 2)
+    - name: hrhtype
+      description: HOUSEHOLD TYPE
+    - name: hrintsta
+      description: INTERVIEW STATUS
+    - name: hrlonglk
+      description: "LONGITUDINAL LINK INDICATOR EDITED UNIVERSE:	ALL HHLDs IN SAMPLE"
+    - name: hrmis
+      description: "MONTH-IN-SAMPLE EDITED UNIVERSE:	ALL HHLDs IN SAMPLE"
+    - name: hrmonth
+      description: MONTH OF INTERVIEW
+    - name: hrnumhou
+      description: TOTAL NUMBER OF PERSONS LIVING IN THE HOUSEHOLD (HOUSEHOLD MEMBERS).
+    - name: hryear4
+      description: YEAR OF INTERVIEW
+    - name: hubus
+      description: DOES ANYONE IN THIS HOUSEHOLD HAVE A BUSINESS OR A FARM?
+    - name: hubusl1
+      description: ENTER LINE NUMBER FOR HUBUS = 1
+    - name: hubusl2
+      description: See  BUSL1
+    - name: hubusl3
+      description: See BUSL1
+    - name: hubusl4
+      description: See BUSL1
+    - name: hufinal
+      description: FINAL OUTCOME CODE
+    - name: huinttyp
+      description: TYPE OF INTERVIEW
+    - name: huprscnt
+      description: NUMBER OF ACTUAL AND ATTEMPTED PERSONAL CONTACTS
+    - name: hurespli
+      description: LINE NUMBER OF THE CURRENT RESPONDENT
+    - name: hutypb
+      description: TYPE B NON-INTERVIEW REASON
+    - name: hutypc
+      description: TYPE C NON-INTERVIEW REASON
+    - name: hutypea
+      description: TYPE A NONINTERVIEW REASON
+    - name: hwhhwgt
+      description: HOUSEHOLD WEIGHT (4 IMPLIED DECIMAL PLACES) USED FOR TALLYING HOUSEHOLD CHARACTERISTICS
+    - name: hwhhwtln
+      description: Line Number (PULINENO) of the person whose PWSSWGT was donated as HWHHWGT for the household
+    - name: hxfaminc
+      description: ALLOCATION FLAG
+    - name: hxhousut
+      description: ALLOCATION FLAG
+    - name: hxphoneo
+      description: ALLOCATION FLAG
+    - name: hxtelavl
+      description: ALLOCATION FLAG
+    - name: hxtelhhd
+      description: ALLOCATION FLAG
+    - name: occurnum
+      description: Unique person identifier.  Valid only within any specific month.
+    - name: peabspdo
+      description: ARE YOU BEING PAID BY YOUR EMPLOYER FOR ANY OF THE TIME OFF LAST WEEK?
+    - name: peabsrsn
+      description: WHAT IS THE MAIN REASON YOU WERE ABSENT FROM WORK LAST WEEK?
+    - name: peafever
+      description: DID YOU EVER SERVE ON ACTIVE DUTY IN THE U.S. ARMED FORCES?
+    - name: peafnow
+      description: ARE YOU NOW IN THE ARMED FORCES
+    - name: peafwhn1
+      description: WHEN DID YOU SERVE?
+    - name: peafwhn2
+      description: WHEN DID YOU SERVE?
+    - name: peafwhn3
+      description: WHEN DID YOU SERVE?
+    - name: peafwhn4
+      description: WHEN DID YOU SERVE?
+    - name: pecert1
+      description: "DOES  HAVE A CURRENTLY ACTIVE PROFESSIONAL CERTIFICATION OR A STATE OR INDUSTRY LICENSE? DO NOT INCLUDE BUSINESS LICENSES, SUCH AS A LIQUOR LICENSE OR VENDING LICENSE."
+    - name: pecert2
+      description: "WERE ANY OF S CERTIFICATIONS OR LICENSES ISSUED BY THE FEDERAL, STATE, OR LOCAL GOVERNMENT?"
+    - name: pecert3
+      description: EARLIER YOU TOLD ME THAT YOU HAD A CURRENTLY ACTIVE PROFESSIONAL CERTIFICATION OR LICENSE.  IS YOUR CERTIFICATION OR LICENSE REQUIRED FOR YOUR
+    - name: pecohab
+      description: LINE NUMBER OF COHABITING PARTNER
+    - name: pecyc
+      description: How many years of college credit has...completed?
+    - name: pedipged
+      description: How did...get...'s high school diploma?
+    - name: pedisdrs
+      description: DOES  HAVE DIFFICULTY DRESSING OR BATHING?
+    - name: pedisear
+      description: ISDEAF OR DOESHAVE SERIOUS DIFFICULTY HEARING?
+    - name: pediseye
+      description: ISBLIND OR DOESHAVE SERIOUS DIFFICULTY SEEING EVEN WHEN WEARING GLASSES?
+    - name: pedisout
+      description: "BECAUSE OF A PHYSICAL, MENTAL, OR EMOTIONAL CONDITION DOESHAVE DIFFICULTY DOING ERRANDS ALONE SUCH AS VISITING A DOCTOR'S OFFICE OR SHOPPING?"
+    - name: pedisphy
+      description: DOESHAVE SERIOUS DIFFICULTY WALKING OR CLIMBING STAIRS?
+    - name: pedisrem
+      description: "BECAUSE OF A PHYSICAL, MENTAL, OR EMOTIONAL CONDITION,  DOESHAVE SERIOUS DIFFICULTY CONCENTRATING, REMEMBERING, OR MAKING DECISIONS?"
+    - name: pedw4wk
+      description: DID YOU DO ANY OF THIS WORK DURING THE LAST 4 WEEKS?
+    - name: pedwavl
+      description: "LAST WEEK, COULD YOU HAVE STARTED A JOB IF ONE HAD BEEN OFFERED?"
+    - name: pedwavr
+      description: WHY IS THAT?
+    - name: pedwlko
+      description: DID YOU LOOK FOR WORK AT ANY TIME IN THE LAST 12 MONTHS
+    - name: pedwlkwk
+      description: SINCE YOU LEFT THAT JOB OR BUSINESS HAVE YOU LOOKED FOR WORK?
+    - name: pedwrsn
+      description: WHAT IS THE MAIN REASON YOU WERE NOT LOOKING FOR WORK DURING THE LAST 4 WEEKS?
+    - name: pedwwk
+      description: DID YOU ACTUALLY WORK AT A JOB OR BUSINESS DURING THE LAST 12 MONTHS?
+    - name: pedwwnto
+      description: "DO YOU CURRENTLY WANT A JOB, EITHER FULL OR PART TIME?"
+    - name: peeduca
+      description: HIGHEST LEVEL OF SCHOOL COMPLETED OR DEGREE RECEIVED
+    - name: peerncov
+      description: ON THIS JOB ARE YOU COVERED BY A UNION OR EMPLOYEE ASSOCIATION CONTRACT?
+    - name: peernhro
+      description: USUAL HOURS
+    - name: peernhry
+      description: HOURLY/NONHOURLY STATUS
+    - name: peernlab
+      description: "ON THIS JOB, ARE YOU A MEMBER OF A LABOR UNION OR OF AN EMPLOYEE ASSOCIATION SIMILAR TO A UNION?"
+    - name: peernper
+      description: PERIODICITY
+    - name: peernrt
+      description: (EVEN THOUGH YOU TOLD ME IT IS EASIER TO REPORT YOUR EARNINGS (PERIODICITY); ARE YOU PAID AT AN HOURLY RATE ON YOUR (MAIN/THIS) JOB?
+    - name: peernuot
+      description: "DO YOU USUALLY RECEIVE OVERTIME PAY, TIPS, OR COMMISSIONS AT YOUR JOB?"
+    - name: peernwkp
+      description: HOW MANY WEEKS A YEAR DO YOU GET PAID FOR?
+    - name: pefntvty
+      description: FATHER'S COUNTRY OF BIRTH
+    - name: pehgcomp
+      description: What was the highest grade of regular school...completed before receiving...'s GED?
+    - name: pehract1
+      description: "LAST WEEK, HOW MANY HOURS DID YOU ACTUALLY WORK AT YOUR JOB?"
+    - name: pehract2
+      description: "LAST WEEK, HOW MANY HOURS DID YOU ACTUALLY WORK AT YOUR OTHER (JOB/JOBS)"
+    - name: pehractt
+      description: SUM OF PEHRACT1 AND PEHRACT2.
+    - name: pehravl
+      description: "LAST WEEK, COULD YOU HAVE WORKED FULL-TIME IF THE HOURS HAD BEEN AVAILABLE?"
+    - name: pehrftpt
+      description: DO YOU USUALLY WORK 35 HOURS OR MORE PER WEEK?
+    - name: pehrrsn1
+      description: WHAT IS YOUR MAIN REASON FOR WORKING PART-TIME?
+    - name: pehrrsn2
+      description: WHAT IS THE MAIN REASON YOU DO NOT WANT TO WORK FULL-TIME?
+    - name: pehrrsn3
+      description: WHAT IS THE MAIN REASON YOU WORKED LESS THAN 35 HOURS LAST WEEK?
+    - name: pehrusl1
+      description: HOW MANY HOURS PER WEEK DO YOU USUALLY WORK AT YOUR MAIN JOB?
+    - name: pehrusl2
+      description: HOW MANY HOURS PER WEEK DO YOU USUALLY WORK AT YOUR OTHER (JOB/JOBS)?
+    - name: pehruslt
+      description: SUM OF HRUSL1 AND HRUSL2.
+    - name: pehrwant
+      description: DO YOU WANT TO WORK A FULL-TIME WORK WEEK OF 35 HOURS OR MORE PER WEEK?
+    - name: pehspnon
+      description: HISPANIC OR NON-HISPANIC
+    - name: peio1cow
+      description: INDIVIDUAL CLASS OF WORKER CODE ON FIRST JOB
+    - name: peio1icd
+      description: INDUSTRY CODE FOR PRIMARY JOB
+    - name: peio2cow
+      description: "INDIVIDUAL CLASS OF WORKER ON SECOND JOB. NOTE:  FOR THOSE SELF-EMPLOYED UNINCORPORATED ON THEIR FIRST JOB, THIS SHOULD HAVE A RESPONSE EVERY MONTH.  FOR ALL OTHERS, THIS SHOULD ONLY HAVE A VALUE IN OUT-GOING ROTATIONS."
+    - name: peio2icd
+      description: INDUSTRY CODE FOR SECOND JOB.
+    - name: pejhrsn
+      description: WHAT IS THE MAIN REASON YOU LEFT YOUR LAST JOB?
+    - name: pejhwant
+      description: DO YOU INTEND TO LOOK FOR WORK DURING THE NEXT 12 MONTHS?
+    - name: pejhwko
+      description: HAVE YOU WORKED AT A JOB OR BUSINESS AT ANY TIME DURING THE PAST 12 MONTHS?
+    - name: pelayavl
+      description: COULD YOU HAVE RETURNED TO WORK LAST WEEK IF YOU HAD BEEN RECALLED?
+    - name: pelaydur
+      description: "DURATION OF LAYOFF EDITED UNIVERSE:	PELAYLK = 1, 2"
+    - name: pelayfto
+      description: FT/PT STATUS OF JOB FROM WHICH SAMPLE PERSON WAS ON LAYOFF FROM
+    - name: pelaylk
+      description: "EVEN THOUGH YOU ARE TO BE CALLED BACK TO WORK, HAVE YOU BEEN LOOKING FOR WORK DURING THE LAST 4 WEEKS."
+    - name: pelkavl
+      description: "LAST WEEK, COULD YOU HAVE STARTED A JOB IF ONE HAD BEEN OFFERED?"
+    - name: pelkdur
+      description: DURATION OF JOB SEEKING
+    - name: pelkfto
+      description: FT/PT STATUS OF JOBSEEKER
+    - name: pelkll1o
+      description: "BEFORE YOU STARTED LOOKING FOR WORK, WHAT WERE YOU DOING: WORKING, GOING TO SCHOOL, OR SOMETHING ELSE?"
+    - name: pelkll2o
+      description: "DID YOU LOSE OR QUIT THAT JOB, OR WAS IT A TEMPORARY JOB THAT ENDED?"
+    - name: pelklwo
+      description: WHEN LAST WORKED
+    - name: pelkm1
+      description: WHAT ARE ALL OF THE THINGS YOU HAVE DONE TO FIND WORK DURING THE LAST 4 WEEKS? (FIRST METHOD)
+    - name: pemaritl
+      description: MARITAL STATUS
+    - name: pemjnum
+      description: "ALTOGETHER, HOW MANY JOBS DID YOU HAVE?"
+    - name: pemjot
+      description: DO YOU HAVE MORE THAN ONE JOB?
+    - name: pemlr
+      description: MONTHLY LABOR FORCE RECODE
+    - name: pemntvty
+      description: MOTHER'S COUNTRY OF BIRTH
+    - name: penatvty
+      description: COUNTRY OF BIRTH
+    - name: penlfact
+      description: "WHAT BEST DESCRIBES YOUR SITUATION AT THIS TIME?  FOR EXAMPLE, ARE YOU DISABLED, ILL, IN SCHOOL, TAKING CARE OF HOUSE OR FAMILY, OR SOMETHING ELSE?"
+    - name: penlfjh
+      description: WHEN DID YOU LAST WORK AT A JOB OR BUSINESS?
+    - name: penlfret
+      description: ARE YOU RETIRED FROM A JOB OR BUSINESS?
+    - name: pepar1
+      description: "LINE NUMBER OF SECOND PARENT (ALWAYS THE MOTHER, IF PRESENT.  WILL BE A MALE IF THE PARENTS ARE SAME SEX.)"
+    - name: pepar1typ
+      description: TYPE OF PEPAR1
+    - name: pepar2
+      description: "LINE NUMBER OF FIRST PARENT (ALWAYS THE FATHER, IF PRESENT.  WILL BE A FEMALE IF THE PARENTS ARE SAME SEX.)"
+    - name: pepar2typ
+      description: TYPE OF PEPAR2
+    - name: pepdemp1
+      description: DOES THIS PERSON USUALLY HAVE ANY PAID EMPLOYEES?
+    - name: pepdemp2
+      description: DOES THIS PERSON USUALLY HAVE ANY PAID EMPLOYEES?
+    - name: peret1
+      description: "DO YOU CURRENTLY WANT A JOB, EITHER FULL OR PART-TIME?"
+    - name: perrp
+      description: RELATIONSHIP TO REFERENCE PERSON
+    - name: peschenr
+      description: "LAST WEEK, WERE YOU ENROLLED IN A HIGH SCHOOL, COLLEGE, OR UNIVERSITY?"
+    - name: peschft
+      description: ARE YOU ENROLLED IN SCHOOL AS A FULL-TIME OR PART-TIME STUDENT?
+    - name: peschlvl
+      description: "WOULD THAT BE HIGH SCHOOL, COLLEGE, OR UNIVERSITY?"
+    - name: pesex
+      description: SEX
+    - name: pespouse
+      description: LINE NUMBER OF SPOUSE
+    - name: prabsrea
+      description: REASON NOT AT WORK AND PAY STATUS
+    - name: pragna
+      description: AGRICULTURE/ NON-AGRICULTURE INDUSTRY
+    - name: prchld
+      description: PRESENCE OF OWN CHILDREN <18 YEARS OF AGE BY SELECTED AGE GROUP
+    - name: prcitflg
+      description: CITIZENSHIP ALLOCATION FLAG
+    - name: prcitshp
+      description: CITIZENSHIP STATUS
+    - name: prcivlf
+      description: CIVILIAN LABOR FORCE
+    - name: prcow1
+      description: CLASS OF WORKER RECODE - JOB 1
+    - name: prcow2
+      description: CLASS OF WORKER RECODE - JOB 2
+    - name: prcowpg
+      description: COW - PRIVATE OR GOVERNMENT
+    - name: prdasian
+      description: DETAILED ASIAN RACE RECODE
+    - name: prdisc
+      description: DISCOURAGED WORKER RECODE
+    - name: prdisflg
+      description: DOES THIS PERSON HAVE ANY OF THESE DISABILITY CONDITIONS?
+    - name: prdtcow1
+      description: DETAILED CLASS OF WORKER RECODE - JOB 1
+    - name: prdtcow2
+      description: DETAILED CLASS OF WORKER RECODE - JOB 2
+    - name: prdthsp
+      description: DETAILED HISPANIC 	ORIGIN GROUP
+    - name: prdtind1
+      description: DETAILED INDUSTRY RECODE - JOB 1
+    - name: prdtind2
+      description: DETAILED INDUSTRY RECODE - JOB 2
+    - name: prdtocc1
+      description: DETAILED OCCUPATION RECODE - JOB 1
+    - name: prdtocc2
+      description: DETAILED OCCUPATION RECODE
+    - name: premp
+      description: REASON NOT AT WORK OR HOURS AT WORK
+    - name: premphrs
+      description: REASON NOT AT WORK OR HOURS AT WORK
+    - name: prempnot
+      description: "MLR - EMPLOYED, UNEMPLOYED, OR NILF"
+    - name: prerelg
+      description: EARNINGS ELIGIBILITY FLAG
+    - name: prexplf
+      description: EXPERIENCED LABOR FORCE EMPLOYMENT
+    - name: prfamnum
+      description: FAMILY NUMBER RECODE
+    - name: prfamrel
+      description: FAMILY RELATIONSHIP RECODE
+    - name: prfamtyp
+      description: FAMILY TYPE RECODE
+    - name: prftlf
+      description: FULL TIME LABOR FORCE
+    - name: prhernal
+      description: ALLOCATION FLAG
+    - name: prhrusl
+      description: USUAL HOURS WORKED WEEKLY
+    - name: primind1
+      description: INTERMEDIATE INDUSTRY RECODE (JOB 1)
+    - name: primind2
+      description: INTERMEDIATE INDUSTRY RECODE (JOB 2)
+    - name: prinuyer
+      description: Not documented
+    - name: prioelg
+      description: INDUSTRY AND OCCUPATION ELIGIBILITY FLAG
+    - name: prjobsea
+      description: JOB SEARCH RECODE
+    - name: prmarsta
+      description: MARITAL STATUS BASED ON ARMED FORCES PARTICIPATION
+    - name: prmjind1
+      description: MAJOR INDUSTRY RECODE - JOB 1
+    - name: prmjind2
+      description: MAJOR INDUSTRY RECODE - JOB 2
+    - name: prmjocc1
+      description: MAJOR OCCUPATION RECODE - JOB 1
+    - name: prmjocc2
+      description: MAJOR OCCUPATION RECODE - JOB 2
+    - name: prmjocgr
+      description: MAJOR OCCUPATION CATEGORIES
+    - name: prnagpws
+      description: "NON-AGRICULTURE, PRIVATE WAGE AND SALARY WORKERS RECODE"
+    - name: prnagws
+      description: Not documented
+    - name: prnlfsch
+      description: NLF ACTIVITY - IN SCHOOL OR NOT IN SCHOOL
+    - name: prnmchld
+      description: Number of own children <18 years of age
+    - name: prpertyp
+      description: TYPE OF PERSON RECORD RECODE
+    - name: prpthrs
+      description: AT WORK 1-34 BY HOURS AT WORK
+    - name: prptrea
+      description: DETAILED REASON FOR PART-TIME
+    - name: prsjmj
+      description: Not documented
+    - name: prtage
+      description: PERSONS AGE
+    - name: prtfage
+      description: TOP CODE FLAG FOR AGE
+    - name: prunedur
+      description: DURATION OF UNEMPLOYMENT FOR LAYOFF AND LOOKING RECORDS
+    - name: pruntype
+      description: REASON FOR UNEMPLOYMENT
+    - name: prwernal
+      description: ALLOCATION FLAG
+    - name: prwksch
+      description: LABOR FORCE BY TIME WORKED OR LOST
+    - name: prwkstat
+      description: FULL/PART-TIME WORK STATUS
+    - name: prwntjob
+      description: NILF RECODE - WANT A JOB OR OTHER NILF
+    - name: ptdtrace
+      description: RACE
+    - name: ptern
+      description: Not documented
+    - name: ptern2
+      description: Not documented
+    - name: pternh1c
+      description: Not documented
+    - name: pternh1o
+      description: Not documented
+    - name: pternh2
+      description: Not documented
+    - name: pternhly
+      description: Not documented
+    - name: pternwa
+      description: Not documented
+    - name: pthr
+      description: AT WORK 1-34 BY HOURS AT WORK
+    - name: ptio1ocd
+      description: Not documented
+    - name: ptio2ocd
+      description: Not documented
+    - name: ptnmemp1
+      description: "EXCLUDING ALL OWNERS, HOW MANY PAID EMPLOYEES DOES THIS PERSON USUALLY HAVE? See location 681-682 for the allocation flag. EDITED UNIVERSE:  PEPDEMP1 = 1"
+    - name: ptnmemp2
+      description: "EXCLUDING ALL OWNERS, HOW MANY PAID EMPLOYEES DOES THIS PERSON USUALLY HAVE?"
+    - name: ptot
+      description: WEEKLY OVERTIME AMOUNT - TOP CODE
+    - name: ptwk
+      description: WEEKLY EARNINGS - TOP CODE
+    - name: puabsot
+      description: LAST WEEK DID YOU HAVE A JOB EITHER FULL OR PART-TIME?
+    - name: pubus1
+      description: "LAST WEEK, DID YOU DO ANY UNPAID WORK IN THE FAMILY BUSINESS OR FARM?"
+    - name: pubus2ot
+      description: DO YOU RECEIVE ANY PAYMENTS OR PROFITS FROM THE BUSINESS?
+    - name: pubusck1
+      description: CHECK ITEM 1 FILTER FOR QUESTIONS ON UNPAID WORK
+    - name: pubusck2
+      description: CHECK ITEM 2 SKIPS OWNERS OF FAMILY BUSINES WHO DID NOT WORK LAST WEEK
+    - name: pubusck3
+      description: CHECK ITEM 3
+    - name: pubusck4
+      description: CHECK ITEM 4
+    - name: puchinhh
+      description: CHANGE IN HOUSEHOLD COMPOSITION
+    - name: pudis
+      description: DISABILITY STATUS (LAST MONTH YOU WERE REPORTED TO HAVE A DISABILITY.)  DOES YOUR DISABILITY CONTINUE TO PREVENT YOU FROM DOING ANY KIND OF WORK FOR THE NEXT 6 MONTHS?
+    - name: pudis1
+      description: DOES YOUR DISABILITY PREVENT YOU FROM ACCEPTING ANY KIND OF WORK DURING THE NEXT SIX MONTHS?
+    - name: pudis2
+      description: DO YOU HAVE A DISABILITY THAT PREVENTS YOU FROM ACCEPTING ANY KIND OF WORK DURING THE NEXT SIX MONTHS?
+    - name: pudwck1
+      description: SCREEN FOR DISCOURAGED WORKERS
+    - name: pudwck2
+      description: SCREEN FOR DISABLED
+    - name: pudwck3
+      description: FILTER FOR RETIRED
+    - name: pudwck4
+      description: FILTER FOR PASSIVE JOB SEEKERS
+    - name: pudwck5
+      description: FILTER FOR PASSIVE JOB SEEKERS
+    - name: puhrck1
+      description: CHECK ITEM 1
+    - name: puhrck12
+      description: CHECK ITEM 12
+    - name: puhrck2
+      description: CHECK ITEM 2 SKIPS PERSONS RESPONDING YES TO HRFTPT OUT OF PT SERIES
+    - name: puhrck3
+      description: CHECK ITEM 3
+    - name: puhrck4
+      description: CHECK ITEM 4
+    - name: puhrck5
+      description: CHECK ITEM 5
+    - name: puhrck6
+      description: CHECK ITEM 6
+    - name: puhrck7
+      description: CHECK ITEM 7
+    - name: puhroff1
+      description: "LAST WEEK, DID YOU LOSE OR TAKE OFF ANY HOURS FROM YOUR JOB, FOR ANY REASON SUCH AS ILLNESS, SLACK WORK, VACATION, OR HOLIDAY?"
+    - name: puhroff2
+      description: HOW MANY HOURS DID YOU TAKE OFF?
+    - name: puhrot1
+      description: "LAST WEEK, DID YOU WORK ANY OVERTIME OR EXTRA HOURS (AT YOUR MAIN JOB) THAT YOU DO NOT USUALLY WORK?"
+    - name: puhrot2
+      description: HOW MANY ADDITIONAL HOURS DID YOU WORK?
+    - name: puio1mfg
+      description: "IS THIS BUSINESS OR ORGANIZATION MAINLY MANUFACTURING, RETAIL TRADE, WHOLESALE TRADE,  OR SOMETHING ELSE?"
+    - name: puio2mfg
+      description: "IS THIS BUSINESS OR ORGANIZATION MAINLY MANUFACTURING, RETAIL TRADE, WHOLESALE TRADE, OR SOMETHING ELSE?"
+    - name: puiock1
+      description: I & O CHECK ITEM 1 SCREEN FOR DEPENDENT I AND O
+    - name: puiock2
+      description: I & O CHECK ITEM 2 SCREEN FOR PREVIOUS MONTHS I AND O CASES
+    - name: puiock3
+      description: I & O CHECK ITEM 3
+    - name: puiodp1
+      description: "LAST MONTH, IT WAS REPORTED THAT YOU WORKED FOR (EMPLOYER'S NAME).  DO STILL WORK FOR (EMPLOYER'S NAME) (AT YOUR MAIN JOB)?"
+    - name: puiodp2
+      description: HAVE THE USUAL ACTIVITIES AND DUTIES OF YOUR JOB CHANGED SINCE LAST MONTH?
+    - name: puiodp3
+      description: LAST MONTH YOU WERE REPORTED AS (A/AN) (OCCUPATION) AND YOUR USUAL ACTIVITIES WERE (DESCRIPTION).  IS THIS AN ACCURATE DESCRIPTION OF YOUR CURRENT JOB?
+    - name: pujhck1
+      description: FILTER FOR OUTGOING ROTATIONS
+    - name: pujhck2
+      description: FILTER FOR PERSONS GOING THROUGH THE I AND O SERIES
+    - name: pujhck3
+      description: JOB HISTORY CHECK ITEM
+    - name: pujhck4
+      description: SCREEN FOR DEPENDENT NILF
+    - name: pujhck5
+      description: SCREEN FOR DEPENDENT NILF
+    - name: pujhdp1o
+      description: DID YOU DO ANY OF THIS WORK IN THE LAST 4 WEEKS?
+    - name: pulay
+      description: "LAST WEEK, WERE YOU ON LAYOFF FROM A JOB?"
+    - name: pulay6m
+      description: HAVE YOU BEEN GIVEN ANY INDICATION THAT YOU WILL BE RECALLED TO WORK WITHIN THE NEXT 6 MONTHS?
+    - name: pulayavr
+      description: WHY IS THAT?
+    - name: pulayck1
+      description: CHECK ITEM 1
+    - name: pulayck2
+      description: CHECK ITEM 2 SCREEN FOR DEPENDENT LAYOFF
+    - name: pulayck3
+      description: CHECK ITEM 3 FILTER FOR DEPENDENT I & O
+    - name: pulaydt
+      description: HAS YOUR EMPLOYER GIVEN YOU A DATE TO RETURN TO WORK?
+    - name: pulineno
+      description: PERSON'S LINE NUMBER
+    - name: pulk
+      description: HAVE YOU BEEN DOING ANYTHING TO FIND WORK DURING THE LAST 4 WEEKS?
+    - name: pulkavr
+      description: WHY IS THAT?
+    - name: pulkdk1
+      description: YOU SAID YOU HAVE BEEN TRYING TO FIND WORK.  HOW DID YOU GO ABOUT LOOKING? (FIRST METHOD)
+    - name: pulkdk2
+      description: ANYTHING ELSE? (SECOND METHOD) VALID ENTRIES
+    - name: pulkdk3
+      description: SAME AS PULKDK2 (THIRD METHOD)
+    - name: pulkdk4
+      description: SAME AS PULKDK2 (FOURTH METHOD)
+    - name: pulkdk5
+      description: SAME AS PULKDK2 (FIFTH METHOD)
+    - name: pulkdk6
+      description: SAME AS PULKDK2 (SIXTH METHOD)
+    - name: pulkm2
+      description: ANYTHING ELSE?  (SECOND METHOD)
+    - name: pulkm3
+      description: SAME AS PULKM2 (THIRD METHOD)
+    - name: pulkm4
+      description: SAME AS PULKM2 (FOURTH METHOD)
+    - name: pulkm5
+      description: SAME AS PULKM2 (FIFTH METHOD)
+    - name: pulkm6
+      description: SAME AS PULKM2 (SIXTH METHOD)
+    - name: pulkps1
+      description: CAN YOU TELL ME MORE ABOUT WHAT YOU DID TO SEARCH FOR WORK? (FIRST METHOD)
+    - name: pulkps2
+      description: ANYTHING ELSE? (SECOND METHOD)
+    - name: pulkps3
+      description: SAME AS PULKPS2 (THIRD METHOD)
+    - name: pulkps4
+      description: SAME AS PULKPS2 (FOURTH METHOD)
+    - name: pulkps5
+      description: SAME AS PULKPS2 (FIFTH METHOD)
+    - name: pulkps6
+      description: SAME AS PULKPS2 (SIXTH METHOD)
+    - name: punlfck1
+      description: NOT IN LABOR FORCE CHECK ITEM - 1
+    - name: punlfck2
+      description: NOT IN LABOR FORCE CHECK ITEM - 2
+    - name: puretot
+      description: "RETIREMENT STATUS (LAST MONTH YOU WERE REPORTED TO BE RETIRED, ARE YOU STILL RETIRED THIS MONTH?) VALID ENTRIES"
+    - name: puslfprx
+      description: LABOR FORCE INFORMATION COLLECTED BY SELF OR PROXY RESPONSE
+    - name: puwk
+      description: "LAST WEEK, DID YOU DO ANY WORK FOR (EITHER) PAY (OR PROFIT)?"
+    - name: pwcmpwgt
+      description: Composited Final Weight.  Used to create BLS's published labor force statistics (4 implied decimal places)
+    - name: pwfmwgt
+      description: FAMILY WEIGHT (4 IMPLIED DECIMALS) ONLY USED FOR TALLYING FAMILY CHARACTERISTICS.
+    - name: pwlgwgt
+      description: LONGITUDINAL WEIGHT (4 IMPLIED DECIMALS) ONLY FOUND ON ADULT RECORDS MATCHED FROM MONTH TO MONTH. (USED FOR GROSS FLOWS ANALYSIS)
+    - name: pworwgt
+      description: "OUTGOING ROTATION WEIGHT (4 IMPLIED DECIMALS) USED FOR TALLYING INFORMATION COLLECTED ONLY IN OUTGOING ROTATIONS (i.e., EARNINGS, 2nd JOB I & O, DETAILED NILF)"
+    - name: pwsswgt
+      description: "FINAL WEIGHT (4 IMPLIED DECIMAL PLACES) USED FOR MOST TABULATIONS, CONTROLLED TO INDEPENDENT ESTIMATES FOR 1) STATES; 2) ORIGIN, SEX, AND AGE; AND 3) AGE, RACE, AND SEX."
+    - name: pwvetwgt
+      description: "VETERANS WEIGHT (4 IMPLIED DECIMALS) USED FOR TALLYING VETERAN'S DATA ONLY, CONTROLLED TO ESTIMATES OF VETERANS SUPPLIED BY VA."
+    - name: pxabspdo
+      description: ALLOCATION FLAG
+    - name: pxabsrsn
+      description: ALLOCATION FLAG
+    - name: pxafever
+      description: ALLOCATION FLAG
+    - name: pxafnow
+      description: ALLOCATION FLAG
+    - name: pxafwhn1
+      description: ALLOCATION FLAG
+    - name: pxage
+      description: ALLOCATION FLAG
+    - name: pxcert1
+      description: ALLOCATION FLAG
+    - name: pxcert2
+      description: ALLOCATION FLAG
+    - name: pxcert3
+      description: ALLOCATION FLAG
+    - name: pxcohab
+      description: ALLOCATION FLAG
+    - name: pxcyc
+      description: ALLOCATION FLAG
+    - name: pxdipged
+      description: ALLOCATION FLAG
+    - name: pxdisdrs
+      description: ALLOCATION FLAG
+    - name: pxdisear
+      description: ALLOCATION FLAG
+    - name: pxdiseye
+      description: ALLOCATION FLAG
+    - name: pxdisout
+      description: ALLOCATION FLAG
+    - name: pxdisphy
+      description: ALLOCATION FLAG
+    - name: pxdisrem
+      description: ALLOCATION FLAG
+    - name: pxdw4wk
+      description: ALLOCATION FLAG
+    - name: pxdwavl
+      description: ALLOCATION FLAG
+    - name: pxdwavr
+      description: ALLOCATION FLAG
+    - name: pxdwlko
+      description: ALLOCATION FLAG
+    - name: pxdwlkwk
+      description: ALLOCATION FLAG
+    - name: pxdwrsn
+      description: ALLOCATION FLAG
+    - name: pxdwwk
+      description: ALLOCATION FLAG
+    - name: pxdwwnto
+      description: ALLOCATION FLAG
+    - name: pxeduca
+      description: ALLOCATION FLAG
+    - name: pxern
+      description: ALLOCATION FLAG
+    - name: pxerncov
+      description: ALLOCATION FLAG
+    - name: pxernh1o
+      description: ALLOCATION FLAG
+    - name: pxernh2
+      description: ALLOCATION FLAG
+    - name: pxernhro
+      description: ALLOCATION FLAG
+    - name: pxernhry
+      description: ALLOCATION FLAG
+    - name: pxernlab
+      description: ALLOCATION FLAG
+    - name: pxernper
+      description: ALLOCATION FLAG
+    - name: pxernrt
+      description: ALLOCATION FLAG
+    - name: pxernuot
+      description: ALLOCATION FLAG
+    - name: pxernwkp
+      description: ALLOCATION FLAG
+    - name: pxfntvty
+      description: ALLOCATION FLAG
+    - name: pxhgcomp
+      description: ALLOCATION FLAG
+    - name: pxhract1
+      description: ALLOCATION FLAG
+    - name: pxhract2
+      description: ALLOCATION FLAG
+    - name: pxhractt
+      description: ALLOCATION FLAG
+    - name: pxhravl
+      description: ALLOCATION FLAG
+    - name: pxhrftpt
+      description: ALLOCATION FLAG
+    - name: pxhrrsn1
+      description: ALLOCATION FLAG
+    - name: pxhrrsn2
+      description: ALLOCATION FLAG
+    - name: pxhrrsn3
+      description: ALLOCATION FLAG
+    - name: pxhrusl1
+      description: ALLOCATION FLAG
+    - name: pxhrusl2
+      description: ALLOCATION FLAG
+    - name: pxhruslt
+      description: ALLOCATION FLAG
+    - name: pxhrwant
+      description: ALLOCATION FLAG
+    - name: pxhspnon
+      description: ALLOCATION FLAG
+    - name: pxinusyr
+      description: ALLOCATION FLAG
+    - name: pxio1cow
+      description: ALLOCATION FLAG
+    - name: pxio1icd
+      description: ALLOCATION FLAG
+    - name: pxio1ocd
+      description: ALLOCATION FLAG
+    - name: pxio2cow
+      description: ALLOCATION FLAG
+    - name: pxio2icd
+      description: ALLOCATION FLAG
+    - name: pxio2ocd
+      description: ALLOCATION FLAG
+    - name: pxjhrsn
+      description: ALLOCATION FLAG
+    - name: pxjhwant
+      description: ALLOCATION FLAG
+    - name: pxjhwko
+      description: ALLOCATION FLAG
+    - name: pxlayavl
+      description: ALLOCATION FLAG
+    - name: pxlaydur
+      description: ALLOCATION FLAG
+    - name: pxlayfto
+      description: ALLOCATION FLAG
+    - name: pxlaylk
+      description: ALLOCATION FLAG
+    - name: pxlkavl
+      description: ALLOCATION FLAG
+    - name: pxlkdur
+      description: ALLOCATION FLAG
+    - name: pxlkfto
+      description: ALLOCATION FLAG
+    - name: pxlkll1o
+      description: ALLOCATION FLAG
+    - name: pxlkll2o
+      description: ALLOCATION FLAG
+    - name: pxlklwo
+      description: ALLOCATION FLAG
+    - name: pxlkm1
+      description: ALLOCATION FLAG
+    - name: pxmaritl
+      description: ALLOCATION FLAG
+    - name: pxmjnum
+      description: ALLOCATION FLAG
+    - name: pxmjot
+      description: ALLOCATION FLAG
+    - name: pxmlr
+      description: ALLOCATION FLAG
+    - name: pxmntvty
+      description: ALLOCATION FLAG
+    - name: pxnatvty
+      description: ALLOCATION FLAG
+    - name: pxnlfact
+      description: ALLOCATION FLAG
+    - name: pxnlfjh
+      description: ALLOCATION FLAG
+    - name: pxnlfret
+      description: ALLOCATION FLAG
+    - name: pxnmemp1
+      description: ALLOCATION FLAG
+    - name: pxnmemp2
+      description: ALLOCATION FLAG
+    - name: pxpar1
+      description: ALLOCATION FLAG
+    - name: pxpar1typ
+      description: ALLOCATION FLAG
+    - name: pxpar2
+      description: ALLOCATION FLAG
+    - name: pxpar2typ
+      description: ALLOCATION FLAG
+    - name: pxpdemp1
+      description: ALLOCATION FLAG
+    - name: pxpdemp2
+      description: ALLOCATION FLAG
+    - name: pxrace1
+      description: ALLOCATION FLAG
+    - name: pxret1
+      description: ALLOCATION FLAG
+    - name: pxrrp
+      description: ALLOCATION FLAG
+    - name: pxschenr
+      description: ALLOCATION FLAG
+    - name: pxschft
+      description: ALLOCATION FLAG
+    - name: pxschlvl
+      description: ALLOCATION FLAG
+    - name: pxsex
+      description: ALLOCATION FLAG
+    - name: pxspouse
+      description: ALLOCATION FLAG
+    - name: qstnum
+      description: Unique household identifier.  Valid only within any specific month.
+  - name: census_2020_legend
+    description: Definitions for each column in census_2020_data
+    columns:
+    - name: name
+    - name: description
+  - name: census_2020_kb
+    description: Knowledge base of valid values for columns in census_2020_data
+    columns:
+    - name: column
+    - name: key
+    - name: value
+
+models:
+- name: census_2020
+  description: "Basic household model"
+  columns:
+  - name: id
+    description: "The primary key for this table"
+    tests:
+    - not_null
+  - name: hefaminc
+    tests:
+    - valid_values
+  - name: pemlr
+    tests:
+    - valid_values
+  - name: puretot
+    tests:
+    - valid_values
+  - name: pudis
+    tests:
+    - valid_values
+  - name: pudis1
+    tests:
+    - valid_values
+  - name: pudis2
+    tests:
+    - valid_values
+  - name: hrhtype
+    tests:
+    - valid_values
+  - name: peret1
+    tests:
+    - valid_values
+  - name: pedwwnto
+    tests:
+    - valid_values
+  - name: prmjind1
+    tests:
+    - valid_values
+  - name: prdtocc2
+    tests:
+    - valid_values
+  - name: peio1icd
+    tests:
+    - valid_values
+  - name: pehrrsn1
+    tests:
+    - valid_values
+  - name: pesex
+    tests:
+    - valid_values
+  - name: ptdtrace
+    tests:
+    - valid_values
+  - name: peeduca
+    tests:
+    - valid_values
+  - name: pemaritl
+    tests:
+    - valid_values

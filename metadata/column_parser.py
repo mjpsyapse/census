@@ -35,6 +35,8 @@ def read_stuff():
     with open('2020_Basic_CPS_Public_Use_Record_Layout_plus_IO_Code_list.txt', 'rb') as legend:
         for line in legend.readlines():
             line = line.replace(b'\xc2\x96', b'') # weird cleaning...
+            line = line.replace(b'\xc2\x92', b'')
+            line = line.replace(b'\xc2\x85', b'')
             line = line.decode('utf8').strip()
             yield line
 

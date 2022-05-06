@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+
+COLUMNS=$(bin/cli/trino.jar \
+    --execute 'select * from hive.warehouse.census_2020_data limit 1' \
+    --output-format=vertical \
+    | cut -f1 -d'|' \
+    | grep -v RECORD \
+    | sort)
+
+for col in $COLUMNS
+do
+    desc=$(xsv search -ni -s 1 $col metadata/legend.csv | xsv select 2 2> /dev/null | head -n1)
+    echo "    - name: $col"
+    echo "      description: ${desc:-Not documented}"
+done
