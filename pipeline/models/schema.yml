@@ -837,8 +837,8 @@ models:
     description: Main job hours
   - name: pehrusl2
     description: Alt job hours
-  - name: pehrftpt
-    description: Total job hours
+  - name: pehruslt
+    description: Sum of job 1 + 2 hours
   - name: peret1
     description: Want a job?
     tests:
@@ -857,8 +857,8 @@ models:
     - valid_values
   - name: peio1icd
     description: Industry code primary job
-    tests:
-    - valid_values
+  - name: peio2icd
+    description: Industry code secondary job
   - name: pehrrsn1
     description: Main reason work part time
     tests:
@@ -933,3 +933,9 @@ models:
     description: Father's country of birth
     tests:
     - valid_values
+  - name: prcitshp
+    description: Citizenship status
+    tests:
+    - valid_values
+  - name: hrmonth
+    description: Month of interview.  Used for incremental updates.

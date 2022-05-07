@@ -11,8 +11,6 @@
     "pedwwnto",
     "prmjind1",
     "prdtocc2",
-    "peio1icd",
-    "peio2icd",
     "pehrrsn1",
     "pehrrsn2",
     "pehrrsn3",
@@ -31,7 +29,6 @@
     "penatvty",
     "pemntvty",
     "pefntvty",
-    "hrintsta",
     "prcitshp"
  ]) %}
 
@@ -39,7 +36,7 @@
 {% set numeric_columns = ([
     "pehrusl1",
     "pehrusl2",
-    "pehruslt",
+    "pehruslt"
  ]) %}
 
 
@@ -76,7 +73,9 @@ SELECT
         WHEN CAST(prtage AS INTEGER) BETWEEN 0 AND 85 THEN CAST(prtage AS INTEGER)
         ELSE NULL
     END AS prtage,
-    CAST(hrmonth AS INTEGER) hrmonth
+    CAST(hrmonth AS INTEGER) hrmonth,
+    peio1icd,
+    peio2icd
 FROM
     {{ source('warehouse', 'census_2020_data') }}
 WHERE
